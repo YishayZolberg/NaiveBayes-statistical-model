@@ -1,11 +1,5 @@
 from dataset_init import *
-def mean(numbers):
-	"""
-    Calculate the mean of a list of numbers
-	:param numbers:
-	:return:
-	"""
-	return sum(numbers)/float(len(numbers))
+
 
 
 def separate_by_class(dataset):
@@ -24,4 +18,3 @@ def separate_by_class(dataset):
 	return separated_dict
 
 print(separate_by_class(dataset))
-#@print(separate_by_class(local_db))
