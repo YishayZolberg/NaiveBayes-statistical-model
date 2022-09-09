@@ -1,7 +1,7 @@
 from dataset_init import *
 def mean(numbers):
 	"""
-    # Calculate the mean of a list of numbers
+    Calculate the mean of a list of numbers
 	:param numbers:
 	:return:
 	"""
@@ -10,7 +10,7 @@ def mean(numbers):
 
 def separate_by_class(dataset):
 	"""
-    # Split the dataset by class values, returns a dictionary
+    Split the dataset by class values, returns a dictionary
 	:param dataset: dataset
 	:return:
 	"""
