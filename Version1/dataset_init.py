@@ -18,5 +18,3 @@ def Iitialize(file):
 	return local_db ,titles
 
 dataset,titels = Iitialize(file)
-print(dataset)
-print(titels)
