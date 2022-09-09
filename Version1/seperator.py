@@ -1,10 +1,19 @@
 from dataset_init import *
-# Calculate the mean of a list of numbers
 def mean(numbers):
+	"""
+    # Calculate the mean of a list of numbers
+	:param numbers:
+	:return:
+	"""
 	return sum(numbers)/float(len(numbers))
 
-# Split the dataset by class values, returns a dictionary
+
 def separate_by_class(dataset):
+	"""
+    # Split the dataset by class values, returns a dictionary
+	:param dataset: dataset
+	:return:
+	"""
 	separated_dict = {}
 	for i in range(len(dataset)):
 		vector = dataset[i]
