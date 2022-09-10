@@ -65,7 +65,7 @@ class Ldb:
         print(self.uniq)
         return self.calc()
 
-    # creates the denominator value list, with the unique values in the denominator collum 
+    # creates the denominator value list, with the unique values in the denominator collum
     # and their appearance in a floating point number out of the length of objects in the tabel
 
     def create_denominator_val(self):
