@@ -38,15 +38,50 @@ def create_anskey(data):
             ans[str(data_seg)] = data[i].count(data_seg)
     return ans
 
+
+# gets the unique values, counts them from the local database construct
+# and returns a dict with the unique params and their appearance
+def uniqvals(ldb, titles):
+    data = {}
+    for i in range(len(ldb[0])):
+        for var in range(len(ldb)):
+            data[titles[i]] = []
+        for j in range(len(ldb)):
+            data[titles[i]].append((ldb[j][i]))
+    data = data[titles[-1]]
+    uniq = set(data)
+    temp = []
+    for uniq_value in uniq:
+        temp.append(data.count(uniq_value))
+    uniq = dict(zip(uniq, temp))
+    return uniq
+
+
+# updates the ans construct to display the probability of the pair
+# appearing in the database as a floating point number; returns ans
+def calc(ldb, ans, titles):
+    uniq = uniqvals(ldb, titles)
+    for value in ans:
+        for uniq_val in uniq:
+            if uniq_val in value.split()[-1]:
+                ans[value] = ans[value] / uniq[uniq_val]
+    return ans
+
+    # for title in titles:
+    #     temp[title] = set(data[title])
+    #     #for value in temp[title]:
+    #
+    # print(temp)
+
+
 # main func creating variables for ease of use
 def main():
     ldb = create_ldb()
     titles = create_titles(ldb)
     data = create_data(ldb, titles)
     ans = create_anskey(data)
-    print(data)
-    print(ans)
-
+    ans = calc(ldb, ans, titles)
+    print(ans.keys(), "\nhere are your available options:")
 
 if __name__ == "__main__":
     main()
