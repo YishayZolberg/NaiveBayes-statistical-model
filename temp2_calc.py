@@ -63,7 +63,6 @@ def count_set_up(unique_vals, dict_corl, choice_title):
         for value2 in value:
             temp[value2] = dict_corl
         unique_vals[key]=temp
-
     return unique_vals
 
 
@@ -108,4 +107,4 @@ unique, titles_m = make_unique(global_db)
 print(titles_m)
 dict_corl_m, choice_title = choice_question(global_db, False, titles_m, unique)
 
-count_corolation(unique, dict_corl_m, global_db, choice_title, titles_m)
+#count_corolation(unique, dict_corl_m, global_db, choice_title, titles_m)
