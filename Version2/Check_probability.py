@@ -1,6 +1,8 @@
 import csv
 from splitDB import divide_file_70_30
 
+
+
 #the unique values and the number of yes and no cases for each unique value
 unique_vals = {'age': {'middle_age': {'yes': 4, 'no': 0}, 'senior': {'yes': 3, 'no': 2}, 'youth': {'yes': 2, 'no': 3}},
 'income': {'high': {'yes': 2, 'no': 2}, 'medium':{'yes': 4, 'no': 2}, 'low':{'yes': 3, 'no': 1}},
@@ -10,18 +12,24 @@ unique_vals = {'age': {'middle_age': {'yes': 4, 'no': 0}, 'senior': {'yes': 3, '
 #the number of yes and no values in Buy_Computer
 choice_dict= {'yes': 9, 'no': 5 }
 
-# unique_titles = []
-# unique_option = []
-# for key,value in unique_vals.items():
-#     unique_titles.append(key)
-#     print(unique_titles)
-#     for val in value:
-#         if val not in unique_option:
-#             unique_option.append(val)
-# print(unique_option)
+def yishay_calc(dic, userDic):
+    buy = 0.0
+    not_buy = 0.0
+    templen = 0
+    for title, uniq in zip(dic,userDic):
+        templen = dic[title][uniq]['yes']+dic[title][uniq]['no']
+        if buy == 0.0:
+            buy = dic[title][uniq]['yes'] / templen
+            not_buy = dic[title][uniq]['no'] / templen
+        else:
+            buy *= dic[title][uniq]['yes']/templen
+            not_buy *= dic[title][uniq]['no']/templen
+    #print(buy)
+    #print(not_buy)
+    return 1 if buy > not_buy else 0
 
-
-
+a = ['senior','high','no','fair']
+#print(yishay_calc(unique_vals,a))
 
 
 with open('db.csv') as db:
@@ -32,12 +40,38 @@ with open('db.csv') as db:
 #print(f'localdb30: {local_db30}')
 
 
+def accuracy(y_true,y_pred):
+    count = 0
+    correct = 0
+    for i in range(len(y_true)):
+        count += 1
+        if y_true[i] == y_pred[i]:
+            correct += 1
+    acc = correct / count
+    return round(acc,4)
+
 def check_probability(local_db30):
-
+    buy_comp = []
+    buy_comp2 = []
+    list_of_ans = []
     for row in local_db30:
-        print(row)
+        list_of_ans.append(yishay_calc(unique_vals,row[:-1]))
+        buy_comp.append(row[-1])
 
-check_probability(local_db30)
+    for i in range(len(buy_comp)):
+
+        if buy_comp[i] == 'yes':
+            buy_comp2.append(1)
+        else:
+            buy_comp2.append(0)
+    return accuracy(buy_comp2,list_of_ans)
+
+
+
+
+
+print(check_probability(local_db30))
+
 
 
 
