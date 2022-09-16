@@ -26,39 +26,18 @@ def csv_data():
 
     return local_db
 
+#this function inserts the third layes of the data model: the unique options of the question column
+def count_set_up(unique_vals, dict_corl):
+    temp = {}
+    for key, value in unique_vals.items():
+        temp = dict.fromkeys(value, ' ')
 
-def count_corolation(unique_vals, dict_corl, local_db, choice_title, titles):
-    #unique_vals = count_set_up(unique_vals, dict_corl, choice_title)
-    list = []
-    indx = 0
-    len1 = len(local_db[0]) - 1
-    key_num = ''
+        for value2 in value:
+            temp[value2] = dict_corl
+        unique_vals[key]=temp
 
-    for y_s in dict_corl.keys():
-        dict_corl[y_s] = 0
-        list.append(y_s)
-
-    indx= titles.index(choice_title)
-    del titles[indx]
-
-    #for num, row in len(local_db):
-    for number in range(len(local_db[0])):
-        for num2, row2 in enumerate(local_db):
-            if number <= len(titles)-1 and unique_vals[titles[number]].get(row2[number], None) != None:
-                if row2[len1] == list[0]: #if is no
-                    unique_vals[titles[number]][row2[number]][list[0]] += 1
-                elif row2[len1] == list[1]: #if is yes
-                    unique_vals[titles[number]][row2[number]][list[1]] += 1
-            elif row2[number] == list[0]:
-                dict_corl[list[0]] += 1
-            elif row2[number] == list[1]:
-                dict_corl[list[1]] += 1
-
-    print(unique_vals)
-    print(dict_corl)
+    return unique_vals
 
 choice_title='Buy_Computer'
 local_db_m=csv_data()
-titles = local_db_m.pop(0)
-count_corolation(unique_vals,dict_corl,local_db_m,choice_title,titles)
-print(len(local_db_m))
+count_set_up(unique_vals,dict_corl)
