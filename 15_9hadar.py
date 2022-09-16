@@ -4,7 +4,7 @@ wnted_unique_vals = {'age': {'middle_age': {'yes': 4, 'no': 0}, 'senior': {'yes'
 'income': {'high': {'yes': 2, 'no': 2}, 'medium':{'yes': 4, 'no': 2}, 'low':{'yes': 3, 'no': 1}},
 'student': {'yes': {'yes': 6, 'no':1 }, 'no': {'yes': 3, 'no': 4}},
 'credit_rating': {'excellent': {'yes': 3, 'no':3 }, 'fair': {'yes': 6, 'no': 2}}}
-
+print(wnted_unique_vals)
 unique_vals= {'age': {'middle_age': {'yes': 0, 'no': 0}, 'senior': {'yes': 0, 'no': 0}, 'youth': {'yes': 0, 'no': 0}},
 'income': {'high': {'yes': 0, 'no': 0}, 'medium':{'yes': 0, 'no': 0}, 'low':{'yes': 0, 'no': 0}},
 'student': {'yes': {'yes': 0, 'no':0 }, 'no': {'yes': 0, 'no': 0}},
@@ -38,6 +38,24 @@ def count_set_up(unique_vals, dict_corl):
 
     return unique_vals
 
+#this function inserts the third layes of the data model: the unique options of the question column
+def count_set_up(unique_vals, dict_corl):
+    temp = {}
+    for key, value in unique_vals.items():
+        temp = dict.fromkeys(value, ' ')
+
+        for value2 in value:
+            dict_corl1 = copy.deepcopy(dict_corl)
+            temp[value2] = dict_corl
+        unique_vals[key]=temp
+
+    return unique_vals
+
+
+list = [1,2,3,3,4]
+set(list)
+print(type(list))
+print(list)
 choice_title='Buy_Computer'
 local_db_m=csv_data()
 count_set_up(unique_vals,dict_corl)
