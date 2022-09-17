@@ -110,8 +110,7 @@ def count_corolation(unique_vals, dict_corl, local_db, choice_title, titles):
             elif row[number] == lst[1]:
                 dict_corl[lst[1]] += 1
 
-    print(unique_vals)
-    print(dict_corl)
+    return unique_vals, dict_corl
 
 def class_main():
     local_db = []
@@ -122,7 +121,9 @@ def class_main():
     local_db = csv_data() #create data base
     unique_vals, titles = make_unique(local_db) #return two data models
     dict_corl, choice_title = choice_question(local_db, titles, unique_vals) #return the relevant info from the user's choice
-    count_corolation(unique_vals, dict_corl, local_db, choice_title, titles)
+    unique_vals, dict_corl= count_corolation(unique_vals, dict_corl, local_db, choice_title, titles)
+    print(unique_vals)
+    print(dict_corl)
 
 class_main()
 
