@@ -1,8 +1,5 @@
 import csv
 from splitDB import divide_file_70_30
-
-
-
 #the unique values and the number of yes and no cases for each unique value
 unique_vals = {'age': {'middle_age': {'yes': 4, 'no': 0}, 'senior': {'yes': 3, 'no': 2}, 'youth': {'yes': 2, 'no': 3}},
 'income': {'high': {'yes': 2, 'no': 2}, 'medium':{'yes': 4, 'no': 2}, 'low':{'yes': 3, 'no': 1}},
@@ -29,7 +26,7 @@ def yishay_calc(dic, userDic):
     return 1 if buy > not_buy else 0
 
 a = ['senior','high','no','fair']
-#print(yishay_calc(unique_vals,a))
+print(yishay_calc(unique_vals,a))
 
 
 with open('db.csv') as db:
@@ -67,10 +64,10 @@ def check_probability(local_db30):
     return accuracy(buy_comp2,list_of_ans)
 
 
+local_dbpop = local_db70.pop(0)
+print(local_db70)
 
-
-
-print(check_probability(local_db30))
+print(check_probability(local_db70))
 
 
 

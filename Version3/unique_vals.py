@@ -1,6 +1,5 @@
 import csv
 import copy
-
 def csv_data():
     local_db = []
 # TO DO : make a check to verify we dont enter empty lines to the local db OR enpty file OR nonexistant file
@@ -124,5 +123,5 @@ def class_main():
     unique_vals, dict_corl= count_corolation(unique_vals, dict_corl, local_db, choice_title, titles)
     return unique_vals, dict_corl
 
-unique_vals, dict_corl = class_main()
-print(unique_vals)
+#unique_vals, dict_corl = class_main()
+#print(unique_vals)

@@ -1,6 +1,6 @@
 from unique_vals import *
-unique_vals, cor = class_main()
-print(f'unique: {unique_vals},\ncor: {cor}')
+unique_vals, dict_corl = class_main()
+#print(f'unique: {unique_vals},\ncor: {cor}')
 
 
 def yishay_calc(dic, userDic):
@@ -31,12 +31,12 @@ def yishay_calc(dic, userDic):
             not_buy *= no / templen
 
     # print(f'buy {buy} , \nnot buy {not_buy}')
-    buy *= cor['yes'] / sum(cor.values())
-    not_buy *= cor['no'] / sum(cor.values())
+    buy *= dict_corl['yes'] / sum(dict_corl.values())
+    not_buy *= dict_corl['no'] / sum(dict_corl.values())
     # print(f'buy {buy} , \nnot buy {not_buy}')
     return 1 if buy > not_buy else 0
 
-a = ['youth','low','no','fair']
-print(yishay_calc(unique_vals,a))
+#a = ['youth','low','no','fair']
+#print(yishay_calc(unique_vals,a))
 
 #print(yishay_calc(dic, userDic))

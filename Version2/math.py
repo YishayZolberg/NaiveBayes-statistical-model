@@ -12,6 +12,9 @@ def yishay_calc(dic, userDic):
             not_buy *= dic[title][uniq]['no']/templen
     #print(buy)
     #print(not_buy)
-    return buy > not_buy
+    return 1 if buy > not_buy else 0
+
+a = ['senior','high','no','fair']
+#print(yishay_calc(unique_vals,a))
 
 #print(yishay_calc(dic, userDic))
