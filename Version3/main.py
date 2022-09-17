@@ -1,6 +1,8 @@
 from unique_vals import *
 import csv
 
+unique_vals, dict_corl = class_main()
+
 
 def divide_file_70_30(reader):
     local_db70 = []
@@ -74,6 +76,8 @@ def check_probability(local_db30):
     for row in local_db30:
         list_of_ans.append(calc(unique_vals,row[:-1]))
         buy_comp.append(row[-1])
+    print(buy_comp)
+    print(list_of_ans)
 
     for i in range(len(buy_comp)):
 
@@ -81,12 +85,14 @@ def check_probability(local_db30):
             buy_comp_final.append(1)
         else:
             buy_comp_final.append(0)
+    print(buy_comp_final)
     return accuracy(buy_comp_final,list_of_ans)
 
 def user_input(titles):
     answers = []
+    print(f'All Dataset Titles: {titles}')
     for title in titles:
-        answers.append(input(f"Please answer according to - {title}:\t"))
+        answers.append(input(f"Please answer according to - {title}: {unique_vals[title].keys()}\t"))
     print(answers)
     return answers
 
@@ -95,15 +101,16 @@ def main():
     with open('db.csv') as db:
         reader = csv.reader(db, delimiter=',')
         local_db70, local_db30,titles = divide_file_70_30(reader)
-    print(f'All Dataset Titles: {titles}')
 
-    #user_input(titles)
-    print("Naive Bayes Classificator")
     print(f'The probability of this dataset based on our model is: {check_probability(local_db30)}')
-    print(zip(local_db70))
+
+    # for i in titles:
+    #     print(unique_vals[i].keys())
+    answer = user_input(titles)
+    print(calc(unique_vals,answer))
+    print("Naive Bayes Classificator")
 
 
 if __name__ == '__main__':
-    unique_vals, dict_corl = class_main()
     main()
 

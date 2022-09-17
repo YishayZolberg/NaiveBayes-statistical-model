@@ -1,5 +1,6 @@
 import csv
 import copy
+
 def csv_data():
     local_db = []
 # TO DO : make a check to verify we dont enter empty lines to the local db OR enpty file OR nonexistant file
