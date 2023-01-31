@@ -1,2 +1,1 @@
-# NaiveBayes_Room3
-Naïve Bayes Weekand Project
+# NaiveBayes- statistic model without any package
